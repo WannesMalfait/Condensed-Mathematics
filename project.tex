@@ -11,6 +11,7 @@
 \DeclareMathOperator{\colim}{colim}
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\Cond}{Cond}
+\DeclareMathOperator{\CHaus}{\mathbf{CHaus}}
 
 \title{A Condensed Introduction to Condensed Mathematics}
 \author{Wannes Malfait}
@@ -20,11 +21,130 @@
 
 \maketitle
 
-\section{Introduction}
-\section{Preliminaries}
-\section{Condensed Mathematics}
 
-\nocite{*}
+\section{Introduction}
+
+The goal of this paper is to provide
+an idea of what condensed mathematics is about,
+while not assuming too\footnote{
+    Throughout this paper it will be assumed that the reader
+    is somewhat familiar with basic notions from
+    category theory, and in particular homological
+    algebra.
+} much mathematical background
+from the reader.
+The material is based on the lecture
+notes by Peter Scholze and the master class in
+condensed mathematics by
+Peter Scholze and Dustin
+Clausen (\cite{Sch2019LecturesCM,Sch2020MasterClass}).
+Let us now try to motivate why one might
+consider studying condensed sets. Additionally,
+a potential train of thought leading to the
+definition of a condensed set is proposed, which
+hopes to give the reader some intuition where
+this seemingly strange definition comes from.
+
+\section{Why condensed sets?}
+
+The modern definition of a topological space
+only came about in the 1920s. It has proven
+to be a very interesting and rich field of study,
+with many applications across mathematics. Even so,
+it seems that there is something fundamentally wrong
+with the way we combine algebraic structures with
+topology. Consider the inclusion map
+\begin{equation*}
+    \bbQ \injto \bbR,
+\end{equation*}
+for example. As a map between abelian groups,
+this map is injective, but not surjective. However,
+when we instead consider this as a map between
+Hausdorff topological abelian groups, where $\bbQ$ and $\bbR$
+have been equipped with their usual metric topology,
+then this map also becomes an epimorphism. Indeed,
+if two continuous maps $f,g\colon \bbR \to X$ agree
+on the dense subspace $\bbQ$, then they must be equal,
+if $X$ is Hausdorff. One sees that it somehow becomes
+more difficult to tell apart $\bbQ$ from $\bbR$
+in the topological setting.
+
+A potential way to fix
+this would be to consider only a particularly nice
+class of topological spaces. For example, one could
+try to restrict to just $\CHaus$, the category
+of compact Hausdorff spaces. There, every continuous
+map is also closed, and hence a continuous bijection
+is automatically a homeomorphism. In fact, this
+category is an abelian category. Indeed, Pontryagin
+duality gives that discrete abelian groups
+are dual to compact Hausdorff groups (by considering
+the group of continuous group characters). So
+$\Ab^{\opp} \simeq \CHaus$, and $\CHaus$ is
+abelian as the opposite category of an abelian category.
+This means that it makes sense to start talking
+about long exact sequences and homology in this
+setting.
+The problem with
+this approach is that there are many interesting
+and non-pathological topological
+groups that are not compact. For example, the real
+numbers with the metric topology is not compact.
+Hence, we will need some way of including a
+broader class of topological spaces.
+
+At this point it is a good idea to study the literature.
+The field of algebraic geometry turns out to be particularly
+fruitful. In \cite{Steenrod1967ConvenientCT} it is suggested
+to look at the category of compactly generated
+spaces. This category satisfies some nice properties
+relating unions products and quotients, such as $Z^{Y\times X} = (Z^Y)^X$.
+It is also not too strict: it contains
+many families of topological spaces, such as locally compact
+spaces, CW-complexes and first-countable spaces. The product in this
+category turns out to be the natural product for CW-complexes
+(see the appendix of \cite{Hat2002AlgebraicT}).
+What does it mean for a topological space to be compactly generated?
+\begin{definition}
+    A topological space $X$ is said to be \emph{compactly generated}
+    if the topology on $X$ coincides with the final topology generated
+    by all the continuous maps $K \to X$ with $K$ compact Hausdorff.
+    In other words, a map $f\colon X \to Y$ is continuous, if
+    $K \to X \to Y$ is continuous for every continuous map $K \to X$.
+\end{definition}
+So, if we understand the continuous maps $K \to X$, we understand
+the space $X$. We now take a small leap in logic, motivated by algebraic
+geometry, and conclude that $X$ is determined by the functor
+\begin{equation*}
+    \underline{X} \defeq \Cont(-, X) \colon \CHaus^{\opp} \to \Set,
+\end{equation*}
+which maps any compact Hausdorff space $K$ to the set of
+continuous functions $K \to X$. This claim is justified in
+\cref{prop:compactly_generated_adjunction}. We can of course
+consider the same type of functor for any topological space
+$X$. The functor $\underline{X}$ (with some minor modifications)
+will be the condensed set
+associated to $X$. For this to lead to a good theory, which
+would replace topological spaces, we want two things:
+\begin{enumerate}
+    \item The definition is strong enough. We are able
+          to express the topological properties we want in this
+          new setting.
+    \item The definition is not too strong. We do not
+          end up with a theory that is just the same as topological spaces.
+          Constructions and invariants that we care about should be
+          valid in this new setting.
+\end{enumerate}
+The goal of the following sections is to provide evidence
+that condensed mathematics does indeed behave as wanted.
+
+\section{What are condensed sets?}
+
+\begin{prop}
+    \label{prop:compactly_generated_adjunction}
+\end{prop}
+
+\section{Condensed abelian groups}
 \bibliographystyle{alpha}
 \bibliography{references.bib}
 \end{document}
