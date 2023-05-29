@@ -140,10 +140,104 @@ that condensed mathematics does indeed behave as wanted.
 
 \section{What are condensed sets?}
 
+Recall from the previous section that we moved from
+topological spaces $X$, to contravariant functors $\underline{X}$.
+We now want to view these as objects of some category.
+As morphisms,
+i.e. maps between condensed sets, we'll take natural transformations.
+This poses a few problems.
+
+Firstly,
+we need to be careful to not end up with set-theoretical
+issues. Indeed, the category $\CHaus$ has a proper class
+of objects, and hence the natural transformations between
+two functors $\underline{X}$ and $\underline{Y}$ will fail
+to be a set in general. To solve this, we fix some
+uncountable strong limit cardinal $\kappa$. This is
+a cardinal $|\bbN| < \kappa$ such that $2^\lambda < \kappa$ for any
+cardinal $\lambda < \kappa$. This means that
+if $X$ and $Y$ are sets with cardinality smaller than $\kappa$,
+then so will their product, union, and respective powersets.
+We will then restrict to just those compact Hausdorff spaces
+which are $\kappa$-small, i.e. with cardinality less than $\kappa$.
+In practice this is not a big restriction. Most sets one encounters
+``in the wild''
+have cardinality less than $\kappa$. For example, the set of
+real numbers, or even the set of functions $\bbR \to \bbR$ all have
+cardinality less than $\kappa$. Indeed, $|\bbR| = 2^{|\bbN|} < \kappa$
+and
+\begin{equation*}
+    |\bbR^{\bbR}| \leq 2^{|\bbR\times \bbR|}
+    = 2^{|\bbR|} < \kappa.
+\end{equation*}
+With this, we get a set of natural transformations between
+any two functors.
+
+The second problem is that the category doesn't have all
+the nice properties that we want yet. For example,
+if we take two topological spaces $X$ and $Y$, and
+consider the associated condensed sets $\underline{X}$
+and $\underline{Y}$, then what would be the coproduct
+$\underline{X} \coprod \underline{Y}$? This would need
+to be some functor $\underline{Z}$. TODO: work out this
+example or come up with a better one.
+So, we will need to consider more objects, than just
+the \emph{representable} functors $\underline{X}$.
+From the example it becomes apparent that we need
+to somehow add colimits of the representable functors
+to our category. We can once again reap our solution from
+the field of algebraic topology: sheaves\footnote{
+    It can be shown that a sheaf is a colimit of (sheafifications of) representable
+    sheaves (see
+    \cite[\href{https://stacks.math.columbia.edu/tag/0GLW}{Lemma 0GLW}]{stacks-project}).
+}\footnote{
+    The pun with agricultural sheaves and fields \emph{is} intended.
+}. Sheaves are a very general object, and appear in various
+contexts. A condensed set is a special type of sheaf.
+We omit the definition of what a sheaf is here, and instead
+describe what it means in this context.
+\begin{definition}
+    A $\kappa$-small \emph{condensed set} is a functor
+    \begin{equation*}
+        T \colon \CHaus_{\kappa}^{\opp} \to \Set,
+    \end{equation*}
+    such that $T(\emptyset) = \{*\}$, and
+    \begin{enumerate}
+        \item For any two compact Hausdorff spaces $K_1$ and $K_2$ with cardinality
+              smaller than $\kappa$, the natural map
+              \begin{equation*}
+                  T(K_1 \sqcup K_2) \to T(K_1) \times T(K_2),
+              \end{equation*}
+              is a bijection.
+        \item For any surjection $K' \surjto K$ of compact Hausdorff spaces
+              with cardinality smaller than $\kappa$, let $p_1$ and $p_2$
+              be the two projections $K'\times_K K' \to K'$. Then the map
+              \begin{equation*}
+                  T(K) \to \{x \in T(K') \mid Tp_1(x) = Tp_2(x)\},
+              \end{equation*}
+              is also a bijection.
+    \end{enumerate}
+\end{definition}
+
+Let us now try to unpack this definition.
+For the first condition, note that there are two inclusion maps
+$K_1 \to K_1 \sqcup K_2$ and $K_2 \to K_1 \sqcup K_2$, which give
+maps $T(K_1 \sqcup K_2) \to T(K_1)$ and $T(K_1 \sqcup K_2) \to T(K_2)$.
+By the universal property of the product we obtain a map
+$T(K_1 \sqcup K_2) \to T(K_1) \times T(K_2)$.
+
+In the second property, let $f\colon K' \surjto K$ be the surjection.
+We then have the fiber product $K' \times_K K' = \{(x,y)\in K' \times K' \mid f(x) = f(y)\}$,
+together with the projection maps $p_1, p_2$ onto the two components.
+Since $f\circ p_1 = f \circ p_2$, we have $Tp_1 \circ Tf = Tp_2 \circ Tf$
+which shows that the map in the definition is well-defined.
+
+TODO: explain intuition about these properties.
 \begin{prop}
     \label{prop:compactly_generated_adjunction}
 \end{prop}
 
+TODO: explain how it works with extremally disconnected.
 \section{Condensed abelian groups}
 \bibliographystyle{alpha}
 \bibliography{references.bib}
