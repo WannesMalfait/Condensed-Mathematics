@@ -4,6 +4,8 @@
 \input{definitions/macros}
 \input{definitions/letterfonts}
 
+\usepackage[width=450pt]{geometry}
+
 \DeclareMathOperator{\Open}{\mathbf{Open}}
 \DeclareMathOperator{\opp}{opp}
 \DeclareMathOperator{\Cont}{Cont}
@@ -12,6 +14,7 @@
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\Cond}{Cond}
 \DeclareMathOperator{\CHaus}{\mathbf{CHaus}}
+\DeclareMathOperator{\Ring}{\mathbf{Ring}}
 \renewcommand{\top}{\textrm{top}}
 
 \title{A Condensed Introduction to Condensed Mathematics}
@@ -179,9 +182,8 @@ the nice properties that we want yet. For example,
 if we take two topological spaces $X$ and $Y$, and
 consider the associated condensed sets $\underline{X}$
 and $\underline{Y}$, then what would be the coproduct
-$\underline{X} \coprod \underline{Y}$? This would need
-to be some functor $\underline{Z}$. TODO: work out this
-example or come up with a better one.
+$\underline{X} \sqcup \underline{Y}$? We can't
+really write this as $\underline{Z}$ for some space $Z$.
 So, we will need to consider more objects, than just
 the \emph{representable} functors $\underline{X}$.
 From the example it becomes apparent that we need
@@ -222,6 +224,8 @@ on a site.
               is also a bijection.
     \end{enumerate}
 \end{definition}
+Similarly, one defines condensed abelian groups or rings, by considering
+functors into $\Ab$ or $\Ring$ instead.
 
 Let us now try to unpack this definition.
 For the first condition, note that there are two inclusion maps
@@ -267,7 +271,6 @@ is also continuous. For the other two properties:
           as for any closed $W \subseteq X$, $s\inv(W) = e(h\inv(W))$
           is closed. This shows that $h\in Te$.
 \end{enumerate}
-TODO: explain intuition about these properties.
 
 This gives some confidence that the definition of a $\kappa$-condensed set
 is a good one. We have now seen that we can go from a topological space
@@ -379,8 +382,37 @@ then $\underline{X}(\{*\})_\top \cong X$. We can say more:
     for all $k\in K$ and $x\in T(K')$.
 \end{proof}
 
-TODO: explain how it works with extremally disconnected.
-\section{Condensed abelian groups}
+We now want to compute limits and colimits
+in $\kappa$-condensed sets. For this we look
+at extremally disconnected spaces.
+An \emph{extremally disconnected} space is a compact Hausdorff
+space such that the closure of every open subset is again open.
+This is equivalent to being a projective object in $\CHaus$ (\cite[Theorem 2.5]{Gle1958ProjectiveTS}).
+It turns out that restricting to extremally disconnected spaces still gives
+rise to the same category of $\kappa$-condensed sets. Furthermore,
+the second condition in the definition of a $\kappa$-condensed set
+turns out to be automatic. This gives the following important result.
+\begin{theorem}[\protect{\cite[Theorem 2.2]{Sch2019LecturesCM}}]
+    The category of $\kappa$-condensed abelian groups is abelian.
+    Limits and colimits can be computed object-wise on extremally
+    disconnected spaces.
+\end{theorem}
+Let us finish by using this result to show what happens
+in the condensed setting to the inclusion map $\iota \colon \bbQ \to \bbR$.
+To check whether $\underline{\iota} \colon \underline{\bbQ} \to \underline{\bbR}$
+is still a monomorphism or an epimorphism we use the previous theorem.
+This tells us that it is equivalent to checking that
+$\underline{\iota}_X \colon \Cont(X, \bbQ) \to \Cont(X, \bbR)$
+is a monomorphism or epimorphism for every extremally disconnected space $X$.
+In abelian groups, monomorphisms and epimorphism are just injective and surjective group
+homomorphisms. The maps $\underline{\iota}_X$ are injective, but not always surjective.
+For example, $\underline{\iota}_{\{*\}} \colon \bbQ \to \bbR$ is not surjective.
+So, we see that moving to condensed abelian groups, the category becomes much
+better behaved, as claimed.
+We have of course only scratched the surface in this paper, but
+hopefully it has provided enough motivation to the reader to explore more about this fascinating
+new theory on their own.
+
 \bibliographystyle{alpha}
 \bibliography{references.bib}
 \end{document}
