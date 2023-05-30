@@ -44,8 +44,8 @@ Peter Scholze and Dustin
 Clausen (\cite{Sch2019LecturesCM,Sch2020MasterClass}).
 Let us now try to motivate why one might
 consider studying condensed sets. Additionally,
-a potential train of thought leading to the
-definition of a condensed set is proposed, which
+we provide a potential train of thought leading to the
+definition of a condensed set, which
 hopes to give the reader some intuition where
 this seemingly strange definition comes from.
 
@@ -108,7 +108,7 @@ many families of topological spaces, such as locally compact
 spaces, CW-complexes and first-countable spaces. The product in this
 category turns out to be the natural product for CW-complexes
 (see the appendix of \cite{Hat2002AlgebraicT}).
-What does it mean for a topological space to be compactly generated?
+So what does it mean for a topological space to be compactly generated?
 \begin{definition}
     A topological space $X$ is said to be \emph{compactly generated}
     if the topology on $X$ coincides with the final topology generated
@@ -184,7 +184,7 @@ consider the associated condensed sets $\underline{X}$
 and $\underline{Y}$, then what would be the coproduct
 $\underline{X} \sqcup \underline{Y}$? We can't
 really write this as $\underline{Z}$ for some space $Z$.
-So, we will need to consider more objects, than just
+So, we will need to consider more objects than just
 the \emph{representable} functors $\underline{X}$.
 From the example it becomes apparent that we need
 to somehow add colimits of the representable functors
@@ -254,22 +254,22 @@ is also continuous. For the other two properties:
     \item Let $e\colon K' \surjto K$ be a surjection of $\kappa$-small
           compact Hausdorff spaces. This gives a map
           \begin{equation*}
-              Te \colon \Cont(K, X) \to \Cont(K', X) \colon g \mapsto g\circ e.
+              \underline{e} \colon \Cont(K, X) \to \Cont(K', X) \colon g \mapsto g\circ e.
           \end{equation*}
-          Since $e$ is a surjection, the map $Te$ is an injection as
+          Since $e$ is a surjection, the map $\underline{e}$ is an injection as
           $g_1\circ e = g_2 \circ e$ implies $g_1 = g_2$. We now need
-          to show that the image of $Te$ is precisely
+          to show that the image of $\underline{e}$ is precisely
           \begin{equation*}
               S = \{h \in \Cont(K' , X) \mid h\circ p_1 = h\circ p_2\}.
           \end{equation*}
-          We already saw that $Te \subseteq S$. On the other hand,
+          We already saw that $\Img(\underline{e}) \subseteq S$. On the other hand,
           if $h \in S$, then $e(x) = e(y) \implies h(x) = h(y)$ for
           any $x,y\in K'$. This implies that there is a well-defined
           map of sets $s\colon K \to X$ with $s(k) = h(e\inv(\{k\}))$.
           By construction, $h = s\circ e$. Since $e$ is a surjection
           of compact Hausdorff spaces, it is closed. So $s$ is continuous,
           as for any closed $W \subseteq X$, $s\inv(W) = e(h\inv(W))$
-          is closed. This shows that $h\in Te$.
+          is closed. This shows that $h\in \underline{e}$.
 \end{enumerate}
 
 This gives some confidence that the definition of a $\kappa$-condensed set
@@ -279,21 +279,21 @@ to retrieve a topological space from a condensed set?
 From a condensed set $T$, we can obtain the ``underlying set'', by evaluating
 the functor in the singleton: $T(\{*\})$. Of course, not all condensed sets
 are of the form $\Cont(-, X)$ for some topological space $X$, and there are
-non-trivial condensed sets for which $T(\{*\}) = \{*\}$ as we will
-see later on. The question still remains how we can equip the underlying
+non-trivial condensed sets for which $T(\{*\}) = \{*\}$.
+The question still remains how we can equip the underlying
 set with a topology. We arrived at the definition of a
 condensed set by looking at compactly
 generated spaces. This also gives us the intuition for how to
 define a topology on the underlying set.
 
 Let $T$ be a $\kappa$-condensed
-set, and $K$ a $\kappa$-small compact Hausdorff space. First, note that every
+set, and $K$ a $\kappa$-small compact Hausdorff space. Note that every
 element $x \in T(K)$ induces a map (of sets) $f_x \colon K \to T(\{*\})$. Indeed,
 for every $k\in K$ we have an inclusion map $i_K \colon \{k\} \to K$
 which gives a map $Ti_k \colon T(K) \to T(\{k\}) \cong T(\{*\})$. Then
 $f_x(k)$ is simply defined as $Ti_k(x)$. To make this clearer, we should
 look at the special case $T = \underline{X}$ for some topological space
-$X$. Let $h\in \underline{X}(K) = \Cont(K , S)$, then $f_h = h$.
+$X$. For $h\in \underline{X}(K) = \Cont(K , S)$, we have $f_h = h$.
 After all, $f_h(k) = \underline{X}i_k(h) = h\circ i_k = h(k)$.
 So, we can think of the elements of $T(K)$ as functions $K \to T(\{*\})$.
 \begin{definition}
@@ -322,10 +322,8 @@ then $\underline{X}(\{*\})_\top \cong X$. We can say more:
     \begin{equation*}
         \underline{f} \colon \Cont(-,X) \to \Cont(-, Y)\colon h \mapsto f\circ h.
     \end{equation*}
-    Evaluating in $\{*\}$ gives back the original function $f$:
-    \begin{equation*}
-        \underline{f}_{\{*\}} \colon X \to Y\colon x \mapsto f(x).
-    \end{equation*}
+    Evaluating in $\{*\}$ gives back the original function:
+    $\underline{f}_{\{*\}} \colon X \to Y\colon x \mapsto f(x)$.
     The fullness for $\kappa$-compactly generated spaces
     follows immediately from the adjunction:
     \begin{equation*}
@@ -391,7 +389,8 @@ This is equivalent to being a projective object in $\CHaus$ (\cite[Theorem 2.5]{
 It turns out that restricting to extremally disconnected spaces still gives
 rise to the same category of $\kappa$-condensed sets. Furthermore,
 the second condition in the definition of a $\kappa$-condensed set
-turns out to be automatic. This gives the following important result.
+turns out to be automatic (\cite[Section 1.2]{Dag2021FoundationsCM}).
+This gives the following important result.
 \begin{theorem}[\protect{\cite[Theorem 2.2]{Sch2019LecturesCM}}]
     The category of $\kappa$-condensed abelian groups is abelian.
     Limits and colimits can be computed object-wise on extremally
@@ -408,7 +407,7 @@ In abelian groups, monomorphisms and epimorphism are just injective and surjecti
 homomorphisms. The maps $\underline{\iota}_X$ are injective, but not always surjective.
 For example, $\underline{\iota}_{\{*\}} \colon \bbQ \to \bbR$ is not surjective.
 So, we see that moving to condensed abelian groups, the category becomes much
-better behaved, as claimed.
+better behaved.
 We have of course only scratched the surface in this paper, but
 hopefully it has provided enough motivation to the reader to explore more about this fascinating
 new theory on their own.
